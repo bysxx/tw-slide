@@ -19,13 +19,6 @@
 npm install tw-slide
 ```
 
-<br />
-
-<picture>
-  <source media="(prefers-color-scheme: dark)" srcset="https://capsule-render.vercel.app/api?type=waving&color=0:3b82f6,50:8b5cf6,100:ec4899&height=2&section=header">
-  <img src="https://capsule-render.vercel.app/api?type=waving&color=0:3b82f6,50:8b5cf6,100:ec4899&height=2&section=header" width="100%">
-</picture>
-
 </div>
 
 <br />
@@ -323,12 +316,5 @@ Chrome, Firefox, Safari, Edge — all modern browsers with [Web Animations API](
 ## License
 
 MIT &copy; [bysxx](https://github.com/bysxx)
-
-<br />
-
-<picture>
-  <source media="(prefers-color-scheme: dark)" srcset="https://capsule-render.vercel.app/api?type=waving&color=0:3b82f6,50:8b5cf6,100:ec4899&height=2&section=footer">
-  <img src="https://capsule-render.vercel.app/api?type=waving&color=0:3b82f6,50:8b5cf6,100:ec4899&height=2&section=footer" width="100%">
-</picture>
 
 </div>
