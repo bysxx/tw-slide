@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>tw-slide Examples</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    body { font-family: 'Inter', system-ui, sans-serif; }
+    .card:hover .preview { transform: scale(1.02); }
+  </style>
+</head>
+<body class="bg-[#0a0a0a] text-white min-h-screen">
+  <div class="max-w-5xl mx-auto px-6 py-20">
+    <div class="text-center mb-20">
+      <p class="text-sm uppercase tracking-[0.3em] text-blue-400 mb-4 font-medium">Examples</p>
+      <h1 class="text-5xl md:text-6xl font-extrabold mb-4">
+        <span class="bg-gradient-to-r from-blue-400 via-purple-500 to-pink-500 bg-clip-text" style="-webkit-text-fill-color:transparent">tw-slide</span>
+      </h1>
+      <p class="text-gray-400 text-lg max-w-xl mx-auto">Click any example to see tw-slide in action.</p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-6">
+      <a href="./guide.html" class="card group block md:col-span-3">
+        <div class="preview rounded-2xl bg-gradient-to-r from-blue-600/20 via-purple-600/20 to-pink-600/20 border border-white/[0.08] p-8 transition-all duration-300 h-36 flex flex-col justify-center text-center">
+          <h3 class="text-2xl font-bold text-white mb-2">How to Use tw-slide</h3>
+          <p class="text-gray-400 text-sm">설치부터 API까지, 12슬라이드 공식 가이드</p>
+        </div>
+      </a>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+      <a href="./startup-pitch.html" class="card group block">
+        <div class="preview rounded-2xl bg-gradient-to-br from-blue-600/20 to-purple-600/20 border border-white/[0.06] p-8 transition-all duration-300 h-48 flex flex-col justify-end">
+          <span class="text-3xl mb-3">🚀</span>
+          <h3 class="text-xl font-bold text-white">Startup Pitch</h3>
+          <p class="text-gray-400 text-sm mt-1">SaaS 스타트업 투자 유치 발표</p>
+        </div>
+      </a>
+
+      <a href="./tech-talk.html" class="card group block">
+        <div class="preview rounded-2xl bg-gradient-to-br from-emerald-600/20 to-cyan-600/20 border border-white/[0.06] p-8 transition-all duration-300 h-48 flex flex-col justify-end">
+          <span class="text-3xl mb-3">⚡</span>
+          <h3 class="text-xl font-bold text-white">Tech Talk</h3>
+          <p class="text-gray-400 text-sm mt-1">개발자 컨퍼런스 기술 발표</p>
+        </div>
+      </a>
+
+      <a href="./portfolio.html" class="card group block">
+        <div class="preview rounded-2xl bg-gradient-to-br from-pink-600/20 to-orange-600/20 border border-white/[0.06] p-8 transition-all duration-300 h-48 flex flex-col justify-end">
+          <span class="text-3xl mb-3">🎨</span>
+          <h3 class="text-xl font-bold text-white">Portfolio</h3>
+          <p class="text-gray-400 text-sm mt-1">디자이너/개발자 포트폴리오</p>
+        </div>
+      </a>
+    </div>
+
+    <div class="text-center mt-16">
+      <p class="text-gray-600 text-sm">
+        Built with <a href="https://github.com/bysxx/tw-slide" class="text-blue-400 hover:underline">tw-slide</a>
+        &middot; <a href="https://www.npmjs.com/package/tw-slide" class="text-gray-500 hover:text-gray-300">npm</a>
+      </p>
+    </div>
+  </div>
+</body>
+</html>

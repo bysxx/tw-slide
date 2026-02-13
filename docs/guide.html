@@ -1,0 +1,563 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>tw-slide Guide | How to Use</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tw-slide/dist/tw-slide.css" />
+  <style>
+    .gradient-text { background-clip: text; -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+    .window { border-radius: 0.75rem; overflow: hidden; background: #0d1117; border: 1px solid rgba(255,255,255,0.08); }
+    .window-bar { display: flex; align-items: center; gap: 6px; padding: 10px 14px; background: rgba(255,255,255,0.03); border-bottom: 1px solid rgba(255,255,255,0.06); }
+    .window-bar::before { content: ''; display: inline-flex; gap: 6px; }
+    .dot { width: 10px; height: 10px; border-radius: 50%; }
+    pre { margin: 0; padding: 1.25rem; font-size: 0.8rem; line-height: 1.7; overflow-x: auto; }
+    .kw { color: #c084fc; }
+    .str { color: #34d399; }
+    .fn { color: #fbbf24; }
+    .cm { color: #6b7280; }
+    .tag { color: #f472b6; }
+    .attr { color: #60a5fa; }
+    .val { color: #34d399; }
+    .num { color: #fb923c; }
+  </style>
+</head>
+<body>
+
+<div class="ts-deck ts-dark">
+
+  <!-- 1. Cover -->
+  <section class="ts-slide">
+    <div class="ts-content text-center">
+      <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-blue-500/10 border border-blue-500/20 text-blue-400 text-xs font-medium tracking-wider uppercase mb-8">Official Guide</div>
+      <h1 class="text-6xl md:text-8xl font-extrabold mb-6">
+        <span class="gradient-text bg-gradient-to-r from-blue-400 via-purple-500 to-pink-500">tw-slide</span>
+      </h1>
+      <p class="text-xl text-gray-400 max-w-xl mx-auto leading-relaxed mb-4">
+        Tailwind CSS 기반 프레젠테이션 라이브러리<br/>사용 가이드
+      </p>
+      <p class="text-gray-600 text-sm">~4.5KB gzip &middot; Zero Dependencies &middot; TypeScript</p>
+      <p class="mt-16 text-gray-600 text-sm">
+        <kbd class="px-2 py-1 bg-gray-800 rounded text-gray-400 font-mono text-xs">Space</kbd> 또는
+        <kbd class="px-2 py-1 bg-gray-800 rounded text-gray-400 font-mono text-xs">&rarr;</kbd> 로 넘기세요
+      </p>
+    </div>
+  </section>
+
+  <!-- 2. Install -->
+  <section class="ts-slide">
+    <div class="ts-content">
+      <p class="text-sm uppercase tracking-[0.2em] text-emerald-400 mb-3 font-medium">Step 1</p>
+      <h2 class="text-4xl font-bold text-white mb-2">설치</h2>
+      <p class="text-gray-500 mb-8 text-lg">npm 또는 CDN, 원하는 방식으로</p>
+
+      <div class="ts-fragment space-y-5" data-ts-animation="fade-up">
+        <div>
+          <p class="text-white text-sm font-semibold mb-2">npm</p>
+          <div class="window">
+            <div class="window-bar">
+              <span class="dot bg-red-500/80"></span>
+              <span class="dot bg-yellow-500/80"></span>
+              <span class="dot bg-green-500/80"></span>
+              <span class="ml-2 text-gray-500 text-xs font-mono">terminal</span>
+            </div>
+            <pre><code class="text-gray-300">npm install tw-slide</code></pre>
+          </div>
+        </div>
+      </div>
+
+      <div class="ts-fragment space-y-5 mt-5" data-ts-animation="fade-up">
+        <div>
+          <p class="text-white text-sm font-semibold mb-2">CDN (설치 없이 바로 사용)</p>
+          <div class="window">
+            <div class="window-bar">
+              <span class="dot bg-red-500/80"></span>
+              <span class="dot bg-yellow-500/80"></span>
+              <span class="dot bg-green-500/80"></span>
+              <span class="ml-2 text-gray-500 text-xs font-mono">index.html</span>
+            </div>
+            <pre><code class="text-gray-300"><span class="tag">&lt;link</span> <span class="attr">rel</span>=<span class="val">"stylesheet"</span>
+  <span class="attr">href</span>=<span class="val">"https://cdn.jsdelivr.net/npm/tw-slide/dist/tw-slide.css"</span> <span class="tag">/&gt;</span>
+
+<span class="tag">&lt;script</span> <span class="attr">src</span>=<span class="val">"https://cdn.jsdelivr.net/npm/tw-slide/dist/tailslide.umd.js"</span><span class="tag">&gt;&lt;/script&gt;</span></code></pre>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 3. Basic Structure -->
+  <section class="ts-slide">
+    <div class="ts-content">
+      <p class="text-sm uppercase tracking-[0.2em] text-blue-400 mb-3 font-medium">Step 2</p>
+      <h2 class="text-4xl font-bold text-white mb-2">기본 구조</h2>
+      <p class="text-gray-500 mb-8 text-lg">HTML 3개 태그만 기억하세요</p>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div class="window">
+          <div class="window-bar">
+            <span class="dot bg-red-500/80"></span>
+            <span class="dot bg-yellow-500/80"></span>
+            <span class="dot bg-green-500/80"></span>
+            <span class="ml-2 text-gray-500 text-xs font-mono">index.html</span>
+          </div>
+          <pre><code class="text-gray-300"><span class="cm">&lt;!-- 1. 덱 컨테이너 --&gt;</span>
+<span class="tag">&lt;div</span> <span class="attr">class</span>=<span class="val">"ts-deck ts-dark"</span><span class="tag">&gt;</span>
+
+  <span class="cm">&lt;!-- 2. 슬라이드 --&gt;</span>
+  <span class="tag">&lt;section</span> <span class="attr">class</span>=<span class="val">"ts-slide"</span><span class="tag">&gt;</span>
+    <span class="cm">&lt;!-- 3. 콘텐츠 --&gt;</span>
+    <span class="tag">&lt;div</span> <span class="attr">class</span>=<span class="val">"ts-content"</span><span class="tag">&gt;</span>
+      <span class="tag">&lt;h1</span> <span class="attr">class</span>=<span class="val">"text-5xl font-bold"</span><span class="tag">&gt;</span>
+        첫 번째 슬라이드
+      <span class="tag">&lt;/h1&gt;</span>
+    <span class="tag">&lt;/div&gt;</span>
+  <span class="tag">&lt;/section&gt;</span>
+
+  <span class="tag">&lt;section</span> <span class="attr">class</span>=<span class="val">"ts-slide"</span><span class="tag">&gt;</span>
+    <span class="tag">&lt;div</span> <span class="attr">class</span>=<span class="val">"ts-content"</span><span class="tag">&gt;</span>
+      <span class="tag">&lt;h1&gt;</span>두 번째 슬라이드<span class="tag">&lt;/h1&gt;</span>
+    <span class="tag">&lt;/div&gt;</span>
+  <span class="tag">&lt;/section&gt;</span>
+
+<span class="tag">&lt;/div&gt;</span></code></pre>
+        </div>
+
+        <div class="space-y-4">
+          <div class="ts-fragment rounded-xl bg-white/[0.03] border border-white/[0.06] p-5" data-ts-animation="fade-left">
+            <code class="text-blue-400 text-sm font-mono">.ts-deck</code>
+            <p class="text-gray-400 text-sm mt-2">전체 프레젠테이션 컨테이너. <code class="text-gray-500">.ts-dark</code>으로 다크모드 전환.</p>
+          </div>
+          <div class="ts-fragment rounded-xl bg-white/[0.03] border border-white/[0.06] p-5" data-ts-animation="fade-left">
+            <code class="text-purple-400 text-sm font-mono">.ts-slide</code>
+            <p class="text-gray-400 text-sm mt-2">각각의 슬라이드. <code class="text-gray-500">&lt;section&gt;</code> 태그 사용을 권장.</p>
+          </div>
+          <div class="ts-fragment rounded-xl bg-white/[0.03] border border-white/[0.06] p-5" data-ts-animation="fade-left">
+            <code class="text-pink-400 text-sm font-mono">.ts-content</code>
+            <p class="text-gray-400 text-sm mt-2">콘텐츠 영역. max-width 제한으로 가독성 확보. 선택사항.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 4. Initialize -->
+  <section class="ts-slide">
+    <div class="ts-content">
+      <p class="text-sm uppercase tracking-[0.2em] text-violet-400 mb-3 font-medium">Step 3</p>
+      <h2 class="text-4xl font-bold text-white mb-2">초기화</h2>
+      <p class="text-gray-500 mb-8 text-lg">JavaScript 한 줄이면 시작</p>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div class="ts-fragment" data-ts-animation="fade-up">
+          <p class="text-white text-sm font-semibold mb-2">ES Module (npm)</p>
+          <div class="window">
+            <div class="window-bar">
+              <span class="dot bg-red-500/80"></span>
+              <span class="dot bg-yellow-500/80"></span>
+              <span class="dot bg-green-500/80"></span>
+              <span class="ml-2 text-gray-500 text-xs font-mono">main.js</span>
+            </div>
+            <pre><code class="text-gray-300"><span class="kw">import</span> TailSlide <span class="kw">from</span> <span class="str">'tw-slide'</span>;
+<span class="kw">import</span> <span class="str">'tw-slide/style.css'</span>;
+
+<span class="kw">const</span> deck = <span class="kw">new</span> <span class="fn">TailSlide</span>({
+  <span class="attr">transition</span>: <span class="str">'slide'</span>,
+  <span class="attr">dark</span>: <span class="num">true</span>,
+});</code></pre>
+          </div>
+        </div>
+
+        <div class="ts-fragment" data-ts-animation="fade-up">
+          <p class="text-white text-sm font-semibold mb-2">CDN (글로벌)</p>
+          <div class="window">
+            <div class="window-bar">
+              <span class="dot bg-red-500/80"></span>
+              <span class="dot bg-yellow-500/80"></span>
+              <span class="dot bg-green-500/80"></span>
+              <span class="ml-2 text-gray-500 text-xs font-mono">index.html</span>
+            </div>
+            <pre><code class="text-gray-300"><span class="tag">&lt;script&gt;</span>
+  <span class="kw">const</span> deck = <span class="kw">new</span> <span class="fn">TailSlide.TailSlide</span>({
+    <span class="attr">transition</span>: <span class="str">'slide'</span>,
+    <span class="attr">dark</span>: <span class="num">true</span>,
+  });
+<span class="tag">&lt;/script&gt;</span></code></pre>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 5. Tailwind Styling -->
+  <section class="ts-slide">
+    <div class="ts-content">
+      <p class="text-sm uppercase tracking-[0.2em] text-cyan-400 mb-3 font-medium">Styling</p>
+      <h2 class="text-4xl font-bold text-white mb-2">Tailwind로 자유롭게</h2>
+      <p class="text-gray-500 mb-8 text-lg">별도 테마 없이, 유틸리티 클래스로 모든 것을 표현</p>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div class="window">
+          <div class="window-bar">
+            <span class="dot bg-red-500/80"></span>
+            <span class="dot bg-yellow-500/80"></span>
+            <span class="dot bg-green-500/80"></span>
+            <span class="ml-2 text-gray-500 text-xs font-mono">slide.html</span>
+          </div>
+          <pre><code class="text-gray-300"><span class="tag">&lt;section</span> <span class="attr">class</span>=<span class="val">"ts-slide"</span><span class="tag">&gt;</span>
+  <span class="tag">&lt;div</span> <span class="attr">class</span>=<span class="val">"ts-content <span class="text-yellow-300">text-center</span>"</span><span class="tag">&gt;</span>
+
+    <span class="tag">&lt;h1</span> <span class="attr">class</span>=<span class="val">"<span class="text-yellow-300">text-6xl font-bold
+      bg-gradient-to-r from-blue-400
+      to-purple-500 bg-clip-text
+      text-transparent</span>"</span><span class="tag">&gt;</span>
+      그라디언트 타이틀
+    <span class="tag">&lt;/h1&gt;</span>
+
+    <span class="tag">&lt;p</span> <span class="attr">class</span>=<span class="val">"<span class="text-yellow-300">text-xl text-gray-400
+      mt-6 max-w-lg mx-auto</span>"</span><span class="tag">&gt;</span>
+      서브타이틀 텍스트
+    <span class="tag">&lt;/p&gt;</span>
+
+  <span class="tag">&lt;/div&gt;</span>
+<span class="tag">&lt;/section&gt;</span></code></pre>
+        </div>
+
+        <div class="space-y-4">
+          <div class="ts-fragment rounded-xl bg-gradient-to-br from-blue-600/20 to-purple-600/20 border border-blue-500/15 p-5" data-ts-animation="fade-left">
+            <p class="text-white font-semibold mb-1">그라디언트</p>
+            <p class="text-gray-400 text-xs"><code>bg-gradient-to-r from-* to-*</code></p>
+          </div>
+          <div class="ts-fragment rounded-xl bg-white/[0.03] border border-white/[0.06] p-5" data-ts-animation="fade-left">
+            <p class="text-white font-semibold mb-1">레이아웃</p>
+            <p class="text-gray-400 text-xs"><code>grid grid-cols-2 gap-4</code>, <code>flex items-center</code></p>
+          </div>
+          <div class="ts-fragment rounded-xl bg-white/[0.03] border border-white/[0.06] p-5" data-ts-animation="fade-left">
+            <p class="text-white font-semibold mb-1">반응형</p>
+            <p class="text-gray-400 text-xs"><code>text-4xl md:text-6xl</code> — 브레이크포인트 자유롭게</p>
+          </div>
+          <div class="ts-fragment rounded-xl bg-white/[0.03] border border-white/[0.06] p-5" data-ts-animation="fade-left">
+            <p class="text-white font-semibold mb-1">다크모드</p>
+            <p class="text-gray-400 text-xs"><code>.ts-dark</code> 클래스 하나로 전환</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 6. Transitions -->
+  <section class="ts-slide">
+    <div class="ts-content text-center">
+      <p class="text-sm uppercase tracking-[0.2em] text-amber-400 mb-3 font-medium">Transitions</p>
+      <h2 class="text-4xl font-bold text-white mb-2">6가지 트랜지션</h2>
+      <p class="text-gray-500 mb-10 text-lg">Web Animations API 기반, 60fps GPU 가속</p>
+
+      <div class="grid grid-cols-2 md:grid-cols-3 gap-4 max-w-3xl mx-auto mb-8">
+        <div class="ts-fragment rounded-xl bg-white/[0.03] border border-white/[0.06] p-4" data-ts-animation="fade-up">
+          <p class="text-white font-semibold mb-1">none</p>
+          <p class="text-gray-600 text-xs">즉시 전환</p>
+        </div>
+        <div class="ts-fragment rounded-xl bg-white/[0.03] border border-white/[0.06] p-4" data-ts-animation="fade-up">
+          <p class="text-white font-semibold mb-1">fade</p>
+          <p class="text-gray-600 text-xs">크로스 디졸브</p>
+        </div>
+        <div class="ts-fragment rounded-xl bg-amber-500/10 border border-amber-500/20 p-4" data-ts-animation="fade-up">
+          <p class="text-amber-300 font-semibold mb-1">slide</p>
+          <p class="text-amber-400/50 text-xs">좌우 슬라이드 (기본값)</p>
+        </div>
+        <div class="ts-fragment rounded-xl bg-white/[0.03] border border-white/[0.06] p-4" data-ts-animation="fade-up">
+          <p class="text-white font-semibold mb-1">zoom</p>
+          <p class="text-gray-600 text-xs">확대/축소</p>
+        </div>
+        <div class="ts-fragment rounded-xl bg-white/[0.03] border border-white/[0.06] p-4" data-ts-animation="fade-up">
+          <p class="text-white font-semibold mb-1">flip</p>
+          <p class="text-gray-600 text-xs">3D 카드 플립</p>
+        </div>
+        <div class="ts-fragment rounded-xl bg-white/[0.03] border border-white/[0.06] p-4" data-ts-animation="fade-up">
+          <p class="text-white font-semibold mb-1">cube</p>
+          <p class="text-gray-600 text-xs">3D 큐브 회전</p>
+        </div>
+      </div>
+
+      <div class="ts-fragment window max-w-md mx-auto text-left" data-ts-animation="fade-up">
+        <pre><code class="text-gray-300"><span class="kw">new</span> <span class="fn">TailSlide</span>({
+  <span class="attr">transition</span>: <span class="str">'cube'</span>,
+  <span class="attr">transitionSpeed</span>: <span class="num">600</span>,
+});</code></pre>
+      </div>
+    </div>
+  </section>
+
+  <!-- 7. Fragments -->
+  <section class="ts-slide">
+    <div class="ts-content">
+      <p class="text-sm uppercase tracking-[0.2em] text-rose-400 mb-3 font-medium">Fragments</p>
+      <h2 class="text-4xl font-bold text-white mb-2">단계별 공개</h2>
+      <p class="text-gray-500 mb-8 text-lg">슬라이드 안에서 요소를 하나씩 보여줍니다</p>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div class="window">
+          <div class="window-bar">
+            <span class="dot bg-red-500/80"></span>
+            <span class="dot bg-yellow-500/80"></span>
+            <span class="dot bg-green-500/80"></span>
+            <span class="ml-2 text-gray-500 text-xs font-mono">사용법</span>
+          </div>
+          <pre><code class="text-gray-300"><span class="cm">&lt;!-- 기본 (fade-in) --&gt;</span>
+<span class="tag">&lt;p</span> <span class="attr">class</span>=<span class="val">"ts-fragment"</span><span class="tag">&gt;</span>
+  첫 번째
+<span class="tag">&lt;/p&gt;</span>
+
+<span class="cm">&lt;!-- 애니메이션 지정 --&gt;</span>
+<span class="tag">&lt;p</span> <span class="attr">class</span>=<span class="val">"ts-fragment"</span>
+   <span class="attr">data-ts-animation</span>=<span class="val">"fade-up"</span><span class="tag">&gt;</span>
+  두 번째
+<span class="tag">&lt;/p&gt;</span>
+
+<span class="tag">&lt;p</span> <span class="attr">class</span>=<span class="val">"ts-fragment"</span>
+   <span class="attr">data-ts-animation</span>=<span class="val">"grow"</span><span class="tag">&gt;</span>
+  세 번째
+<span class="tag">&lt;/p&gt;</span></code></pre>
+        </div>
+
+        <div class="space-y-3">
+          <p class="text-white text-sm font-semibold mb-2">8가지 애니메이션</p>
+          <div class="ts-fragment flex items-center gap-3 rounded-lg bg-white/[0.03] border border-white/[0.06] px-4 py-2.5" data-ts-animation="fade-in">
+            <code class="text-rose-400 text-xs font-mono shrink-0 w-24">fade-in</code>
+            <span class="text-gray-500 text-sm">페이드 (기본값)</span>
+          </div>
+          <div class="ts-fragment flex items-center gap-3 rounded-lg bg-white/[0.03] border border-white/[0.06] px-4 py-2.5" data-ts-animation="fade-up">
+            <code class="text-orange-400 text-xs font-mono shrink-0 w-24">fade-up</code>
+            <span class="text-gray-500 text-sm">아래에서 위로</span>
+          </div>
+          <div class="ts-fragment flex items-center gap-3 rounded-lg bg-white/[0.03] border border-white/[0.06] px-4 py-2.5" data-ts-animation="fade-left">
+            <code class="text-amber-400 text-xs font-mono shrink-0 w-24">fade-left</code>
+            <span class="text-gray-500 text-sm">오른쪽에서 왼쪽으로</span>
+          </div>
+          <div class="ts-fragment flex items-center gap-3 rounded-lg bg-white/[0.03] border border-white/[0.06] px-4 py-2.5" data-ts-animation="grow">
+            <code class="text-emerald-400 text-xs font-mono shrink-0 w-24">grow</code>
+            <span class="text-gray-500 text-sm">작은 크기에서 확대</span>
+          </div>
+          <div class="ts-fragment flex items-center gap-3 rounded-lg bg-white/[0.03] border border-white/[0.06] px-4 py-2.5" data-ts-animation="highlight">
+            <code class="text-blue-400 text-xs font-mono shrink-0 w-24">highlight</code>
+            <span class="text-gray-500 text-sm">하이라이트 강조</span>
+          </div>
+          <p class="text-gray-600 text-xs mt-2">+ fade-down, fade-right, shrink</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 8. Plugins -->
+  <section class="ts-slide">
+    <div class="ts-content">
+      <p class="text-sm uppercase tracking-[0.2em] text-teal-400 mb-3 font-medium">Plugins</p>
+      <h2 class="text-4xl font-bold text-white mb-2">플러그인</h2>
+      <p class="text-gray-500 mb-8 text-lg">필요한 기능만 골라서 사용</p>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-5 mb-8">
+        <div class="ts-fragment rounded-2xl bg-white/[0.03] border border-white/[0.06] p-6" data-ts-animation="fade-up">
+          <div class="h-2 w-2/3 rounded-full bg-gradient-to-r from-blue-500 to-purple-500 mb-5"></div>
+          <h3 class="text-white font-semibold mb-2">ProgressPlugin</h3>
+          <p class="text-gray-400 text-sm mb-3">화면 상단에 얇은 진행률 바 표시</p>
+          <p class="text-gray-600 text-xs">&#8593; 이 슬라이드 상단에서 확인하세요</p>
+        </div>
+        <div class="ts-fragment rounded-2xl bg-white/[0.03] border border-white/[0.06] p-6" data-ts-animation="fade-up">
+          <p class="text-gray-400 text-sm font-mono mb-5">8 / 12</p>
+          <h3 class="text-white font-semibold mb-2">SlideNumberPlugin</h3>
+          <p class="text-gray-400 text-sm mb-3">우측 하단에 현재/전체 슬라이드 번호</p>
+          <p class="text-gray-600 text-xs">&#8600; 우측 하단에서 확인하세요</p>
+        </div>
+        <div class="ts-fragment rounded-2xl bg-white/[0.03] border border-white/[0.06] p-6" data-ts-animation="fade-up">
+          <div class="grid grid-cols-3 gap-1 mb-5">
+            <div class="aspect-video rounded bg-white/[0.06]"></div>
+            <div class="aspect-video rounded bg-white/[0.1]"></div>
+            <div class="aspect-video rounded bg-white/[0.06]"></div>
+          </div>
+          <h3 class="text-white font-semibold mb-2">OverviewPlugin</h3>
+          <p class="text-gray-400 text-sm mb-3"><kbd class="px-1.5 py-0.5 bg-gray-800 rounded text-xs">O</kbd> 키로 전체 슬라이드 그리드 보기</p>
+          <p class="text-gray-600 text-xs">지금 눌러보세요!</p>
+        </div>
+      </div>
+
+      <div class="ts-fragment window max-w-lg" data-ts-animation="fade-up">
+        <pre><code class="text-gray-300"><span class="kw">import</span> TailSlide, {
+  ProgressPlugin,
+  SlideNumberPlugin,
+  OverviewPlugin,
+} <span class="kw">from</span> <span class="str">'tw-slide'</span>;
+
+<span class="kw">const</span> deck = <span class="kw">new</span> <span class="fn">TailSlide</span>();
+deck.<span class="fn">use</span>(<span class="kw">new</span> <span class="fn">ProgressPlugin</span>());
+deck.<span class="fn">use</span>(<span class="kw">new</span> <span class="fn">SlideNumberPlugin</span>());
+deck.<span class="fn">use</span>(<span class="kw">new</span> <span class="fn">OverviewPlugin</span>());</code></pre>
+      </div>
+    </div>
+  </section>
+
+  <!-- 9. Config -->
+  <section class="ts-slide">
+    <div class="ts-content">
+      <p class="text-sm uppercase tracking-[0.2em] text-indigo-400 mb-3 font-medium">Config</p>
+      <h2 class="text-4xl font-bold text-white mb-2">전체 설정 옵션</h2>
+      <p class="text-gray-500 mb-8 text-lg">모든 옵션에 기본값이 있어 생략 가능</p>
+
+      <div class="window">
+        <div class="window-bar">
+          <span class="dot bg-red-500/80"></span>
+          <span class="dot bg-yellow-500/80"></span>
+          <span class="dot bg-green-500/80"></span>
+          <span class="ml-2 text-gray-500 text-xs font-mono">config</span>
+        </div>
+        <pre><code class="text-gray-300"><span class="kw">new</span> <span class="fn">TailSlide</span>({
+  <span class="attr">el</span>: <span class="str">'.ts-deck'</span>,          <span class="cm">// 컨테이너 선택자</span>
+  <span class="attr">transition</span>: <span class="str">'slide'</span>,     <span class="cm">// none | fade | slide | zoom | flip | cube</span>
+  <span class="attr">transitionSpeed</span>: <span class="num">500</span>,    <span class="cm">// 전환 속도 (ms)</span>
+  <span class="attr">easing</span>: <span class="str">'ease-in-out'</span>,  <span class="cm">// CSS 이징 함수</span>
+  <span class="attr">keyboard</span>: <span class="num">true</span>,          <span class="cm">// 키보드 네비게이션</span>
+  <span class="attr">touch</span>: <span class="num">true</span>,             <span class="cm">// 터치 / 스와이프</span>
+  <span class="attr">hash</span>: <span class="num">true</span>,              <span class="cm">// URL 해시 동기화 (#/0, #/1, ...)</span>
+  <span class="attr">dark</span>: <span class="num">true</span>,              <span class="cm">// 다크 모드</span>
+  <span class="attr">loop</span>: <span class="num">false</span>,             <span class="cm">// 마지막 슬라이드 → 처음으로</span>
+  <span class="attr">autoSlide</span>: <span class="num">0</span>,            <span class="cm">// 자동 넘김 (ms, 0 = 꺼짐)</span>
+  <span class="attr">startSlide</span>: <span class="num">0</span>,           <span class="cm">// 시작 슬라이드 인덱스</span>
+});</code></pre>
+      </div>
+    </div>
+  </section>
+
+  <!-- 10. Keyboard -->
+  <section class="ts-slide">
+    <div class="ts-content text-center">
+      <p class="text-sm uppercase tracking-[0.2em] text-gray-500 mb-3 font-medium">Navigation</p>
+      <h2 class="text-4xl font-bold text-white mb-10">키보드 단축키</h2>
+
+      <div class="grid grid-cols-2 gap-4 max-w-2xl mx-auto">
+        <div class="ts-fragment flex items-center gap-4 rounded-xl bg-white/[0.03] border border-white/[0.06] p-4" data-ts-animation="fade-up">
+          <div class="flex gap-1.5 shrink-0">
+            <kbd class="px-3 py-2 bg-gray-800 rounded-lg text-gray-300 font-mono text-sm border border-gray-700">&rarr;</kbd>
+            <kbd class="px-3 py-2 bg-gray-800 rounded-lg text-gray-300 font-mono text-sm border border-gray-700">Space</kbd>
+          </div>
+          <span class="text-gray-400 text-sm text-left">다음</span>
+        </div>
+        <div class="ts-fragment flex items-center gap-4 rounded-xl bg-white/[0.03] border border-white/[0.06] p-4" data-ts-animation="fade-up">
+          <div class="flex gap-1.5 shrink-0">
+            <kbd class="px-3 py-2 bg-gray-800 rounded-lg text-gray-300 font-mono text-sm border border-gray-700">&larr;</kbd>
+            <kbd class="px-3 py-2 bg-gray-800 rounded-lg text-gray-300 font-mono text-sm border border-gray-700">P</kbd>
+          </div>
+          <span class="text-gray-400 text-sm text-left">이전</span>
+        </div>
+        <div class="ts-fragment flex items-center gap-4 rounded-xl bg-white/[0.03] border border-white/[0.06] p-4" data-ts-animation="fade-up">
+          <kbd class="px-3 py-2 bg-gray-800 rounded-lg text-gray-300 font-mono text-sm border border-gray-700 shrink-0">Home</kbd>
+          <span class="text-gray-400 text-sm text-left">처음으로</span>
+        </div>
+        <div class="ts-fragment flex items-center gap-4 rounded-xl bg-white/[0.03] border border-white/[0.06] p-4" data-ts-animation="fade-up">
+          <kbd class="px-3 py-2 bg-gray-800 rounded-lg text-gray-300 font-mono text-sm border border-gray-700 shrink-0">End</kbd>
+          <span class="text-gray-400 text-sm text-left">마지막으로</span>
+        </div>
+        <div class="ts-fragment flex items-center gap-4 rounded-xl bg-white/[0.03] border border-white/[0.06] p-4" data-ts-animation="fade-up">
+          <kbd class="px-3 py-2 bg-gray-800 rounded-lg text-gray-300 font-mono text-sm border border-gray-700 shrink-0">O</kbd>
+          <span class="text-gray-400 text-sm text-left">오버뷰 모드</span>
+        </div>
+        <div class="ts-fragment flex items-center gap-4 rounded-xl bg-white/[0.03] border border-white/[0.06] p-4" data-ts-animation="fade-up">
+          <kbd class="px-3 py-2 bg-gray-800 rounded-lg text-gray-300 font-mono text-sm border border-gray-700 shrink-0">Esc</kbd>
+          <span class="text-gray-400 text-sm text-left">오버뷰 토글</span>
+        </div>
+      </div>
+
+      <p class="ts-fragment text-gray-600 text-sm mt-8" data-ts-animation="fade-in">모바일에서는 좌우 스와이프로 네비게이션</p>
+    </div>
+  </section>
+
+  <!-- 11. API -->
+  <section class="ts-slide">
+    <div class="ts-content">
+      <p class="text-sm uppercase tracking-[0.2em] text-orange-400 mb-3 font-medium">API</p>
+      <h2 class="text-4xl font-bold text-white mb-2">JavaScript API</h2>
+      <p class="text-gray-500 mb-8 text-lg">프로그래밍으로 슬라이드를 제어</p>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div class="window">
+          <div class="window-bar">
+            <span class="dot bg-red-500/80"></span>
+            <span class="dot bg-yellow-500/80"></span>
+            <span class="dot bg-green-500/80"></span>
+            <span class="ml-2 text-gray-500 text-xs font-mono">methods</span>
+          </div>
+          <pre><code class="text-gray-300">deck.<span class="fn">next</span>();             <span class="cm">// 다음</span>
+deck.<span class="fn">prev</span>();             <span class="cm">// 이전</span>
+deck.<span class="fn">goTo</span>(<span class="num">3</span>);            <span class="cm">// 인덱스로 이동</span>
+deck.<span class="fn">getState</span>();         <span class="cm">// 현재 상태</span>
+deck.<span class="fn">getSlides</span>();        <span class="cm">// 슬라이드 배열</span>
+deck.<span class="fn">toggleOverview</span>();   <span class="cm">// 오버뷰 토글</span>
+deck.<span class="fn">destroy</span>();          <span class="cm">// 정리</span></code></pre>
+        </div>
+
+        <div class="window">
+          <div class="window-bar">
+            <span class="dot bg-red-500/80"></span>
+            <span class="dot bg-yellow-500/80"></span>
+            <span class="dot bg-green-500/80"></span>
+            <span class="ml-2 text-gray-500 text-xs font-mono">events</span>
+          </div>
+          <pre><code class="text-gray-300">deck.<span class="fn">on</span>(<span class="str">'slide:changed'</span>, (e) => {
+  console.log(e.from, <span class="str">'→'</span>, e.to);
+});
+
+deck.<span class="fn">on</span>(<span class="str">'fragment:shown'</span>, (e) => {
+  console.log(<span class="str">'fragment'</span>, e.fragment);
+});
+
+deck.<span class="fn">on</span>(<span class="str">'deck:ready'</span>, (e) => {
+  console.log(<span class="str">'total:'</span>, e.totalSlides);
+});</code></pre>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 12. Closing -->
+  <section class="ts-slide">
+    <div class="ts-content text-center">
+      <h1 class="text-5xl md:text-7xl font-extrabold mb-6">
+        <span class="gradient-text bg-gradient-to-r from-blue-400 via-purple-500 to-pink-500">Start Presenting.</span>
+      </h1>
+      <p class="text-xl text-gray-400 max-w-lg mx-auto leading-relaxed mb-12">
+        HTML + Tailwind만으로<br />멋진 프레젠테이션을 만들어보세요.
+      </p>
+
+      <div class="window max-w-sm mx-auto text-left mb-12">
+        <pre><code class="text-gray-300">npm install tw-slide</code></pre>
+      </div>
+
+      <div class="flex items-center justify-center gap-4 mb-8">
+        <a href="https://github.com/bysxx/tw-slide" class="px-5 py-2.5 rounded-full bg-gradient-to-r from-blue-600 to-purple-600 text-white text-sm font-medium hover:opacity-90 transition-opacity">GitHub</a>
+        <a href="https://www.npmjs.com/package/tw-slide" class="px-5 py-2.5 rounded-full border border-gray-700 text-gray-300 text-sm font-medium hover:border-gray-500 transition-colors">npm</a>
+      </div>
+
+      <div class="flex items-center justify-center gap-6 text-gray-600 text-sm">
+        <span>MIT Licensed</span>
+        <span>&bull;</span>
+        <span>TypeScript</span>
+        <span>&bull;</span>
+        <span>Zero Dependencies</span>
+      </div>
+    </div>
+  </section>
+
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/tw-slide/dist/tailslide.umd.js"></script>
+<script>
+  const deck = new TailSlide.TailSlide({
+    transition: 'slide',
+    transitionSpeed: 450,
+    dark: true,
+  });
+  deck.use(new TailSlide.ProgressPlugin());
+  deck.use(new TailSlide.SlideNumberPlugin());
+  deck.use(new TailSlide.OverviewPlugin());
+</script>
+</body>
+</html>

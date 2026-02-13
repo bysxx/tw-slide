@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>TailSlide Demo</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    /* Smooth gradient text helper */
+    .gradient-text {
+      background-clip: text;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+  </style>
+</head>
+<body>
+
+<div class="ts-deck ts-dark">
+
+  <!-- Slide 1: Hero -->
+  <section class="ts-slide">
+    <div class="ts-content text-center">
+      <p class="text-sm uppercase tracking-[0.3em] text-blue-400 mb-6 font-medium">Introducing</p>
+      <h1 class="text-7xl md:text-8xl font-extrabold mb-6">
+        <span class="gradient-text bg-gradient-to-r from-blue-400 via-purple-500 to-pink-500">TailSlide</span>
+      </h1>
+      <p class="text-xl md:text-2xl text-gray-400 max-w-2xl mx-auto leading-relaxed">
+        Beautiful presentations powered by Tailwind CSS.
+        <br />
+        <span class="text-gray-500">No config. No themes. Just utility classes.</span>
+      </p>
+      <div class="mt-12 flex items-center justify-center gap-4">
+        <span class="inline-block px-6 py-2.5 bg-blue-600 text-white rounded-full text-sm font-medium">Get Started</span>
+        <span class="inline-block px-6 py-2.5 border border-gray-600 text-gray-300 rounded-full text-sm font-medium">GitHub</span>
+      </div>
+      <p class="mt-16 text-gray-600 text-sm">Press <kbd class="px-2 py-1 bg-gray-800 rounded text-gray-400 font-mono text-xs">Space</kbd> or <kbd class="px-2 py-1 bg-gray-800 rounded text-gray-400 font-mono text-xs">&rarr;</kbd> to navigate</p>
+    </div>
+  </section>
+
+  <!-- Slide 2: Features with fragments -->
+  <section class="ts-slide">
+    <div class="ts-content">
+      <h2 class="text-4xl font-bold mb-2">
+        <span class="gradient-text bg-gradient-to-r from-emerald-400 to-cyan-400">Why TailSlide?</span>
+      </h2>
+      <p class="text-gray-500 mb-10 text-lg">Everything you need, nothing you don't.</p>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div class="ts-fragment p-6 rounded-2xl bg-white/[0.03] border border-white/[0.06]" data-ts-animation="fade-up">
+          <div class="text-3xl mb-3">🎨</div>
+          <h3 class="text-xl font-semibold text-white mb-2">Tailwind-Native</h3>
+          <p class="text-gray-400 text-sm leading-relaxed">Style every slide with utility classes you already know. No custom theme language to learn.</p>
+        </div>
+        <div class="ts-fragment p-6 rounded-2xl bg-white/[0.03] border border-white/[0.06]" data-ts-animation="fade-up">
+          <div class="text-3xl mb-3">⚡</div>
+          <h3 class="text-xl font-semibold text-white mb-2">Tiny &amp; Fast</h3>
+          <p class="text-gray-400 text-sm leading-relaxed">Zero dependencies. Under 5KB gzipped. Loads instantly.</p>
+        </div>
+        <div class="ts-fragment p-6 rounded-2xl bg-white/[0.03] border border-white/[0.06]" data-ts-animation="fade-up">
+          <div class="text-3xl mb-3">🔌</div>
+          <h3 class="text-xl font-semibold text-white mb-2">Plugin System</h3>
+          <p class="text-gray-400 text-sm leading-relaxed">Progress bars, slide numbers, overview mode &mdash; add only what you need.</p>
+        </div>
+        <div class="ts-fragment p-6 rounded-2xl bg-white/[0.03] border border-white/[0.06]" data-ts-animation="fade-up">
+          <div class="text-3xl mb-3">🖥️</div>
+          <h3 class="text-xl font-semibold text-white mb-2">TypeScript First</h3>
+          <p class="text-gray-400 text-sm leading-relaxed">Full type safety with a clean, documented API surface.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Slide 3: Tailwind-native styling -->
+  <section class="ts-slide">
+    <div class="ts-content">
+      <h2 class="text-4xl font-bold mb-2">
+        <span class="gradient-text bg-gradient-to-r from-amber-400 to-orange-500">Tailwind-Native Styling</span>
+      </h2>
+      <p class="text-gray-500 mb-10 text-lg">Your slides are just HTML + Tailwind. Full creative control.</p>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
+        <div class="rounded-2xl bg-gradient-to-br from-blue-600 to-blue-800 p-6 text-center">
+          <p class="text-4xl font-bold text-white">bg-blue</p>
+          <p class="text-blue-200 text-sm mt-2">Gradient backgrounds</p>
+        </div>
+        <div class="rounded-2xl bg-gradient-to-br from-purple-600 to-pink-600 p-6 text-center">
+          <p class="text-4xl font-bold text-white">rounded-2xl</p>
+          <p class="text-pink-200 text-sm mt-2">Border radius</p>
+        </div>
+        <div class="rounded-2xl bg-gradient-to-br from-emerald-600 to-teal-700 p-6 text-center">
+          <p class="text-4xl font-bold text-white">grid-cols-3</p>
+          <p class="text-emerald-200 text-sm mt-2">Grid layouts</p>
+        </div>
+      </div>
+      <div class="mt-8 p-5 rounded-xl bg-white/[0.04] border border-white/[0.08]">
+        <pre class="text-sm"><code class="text-gray-300"><span class="text-pink-400">&lt;section</span> <span class="text-blue-300">class</span>=<span class="text-emerald-400">"ts-slide"</span><span class="text-pink-400">&gt;</span>
+  <span class="text-pink-400">&lt;div</span> <span class="text-blue-300">class</span>=<span class="text-emerald-400">"ts-content <span class="text-yellow-300">text-center</span>"</span><span class="text-pink-400">&gt;</span>
+    <span class="text-pink-400">&lt;h1</span> <span class="text-blue-300">class</span>=<span class="text-emerald-400">"<span class="text-yellow-300">text-6xl font-bold text-white</span>"</span><span class="text-pink-400">&gt;</span>
+      Your content here
+    <span class="text-pink-400">&lt;/h1&gt;</span>
+  <span class="text-pink-400">&lt;/div&gt;</span>
+<span class="text-pink-400">&lt;/section&gt;</span></code></pre>
+      </div>
+    </div>
+  </section>
+
+  <!-- Slide 4: Transitions -->
+  <section class="ts-slide">
+    <div class="ts-content text-center">
+      <h2 class="text-4xl font-bold mb-2">
+        <span class="gradient-text bg-gradient-to-r from-violet-400 to-fuchsia-500">Smooth Transitions</span>
+      </h2>
+      <p class="text-gray-500 mb-12 text-lg">Six built-in transition styles, fully configurable.</p>
+      <div class="grid grid-cols-2 md:grid-cols-3 gap-4 max-w-3xl mx-auto">
+        <div class="ts-fragment p-5 rounded-xl bg-white/[0.04] border border-white/[0.06] hover:border-violet-500/40 transition-colors" data-ts-animation="fade-up">
+          <p class="text-lg font-semibold text-white mb-1">None</p>
+          <p class="text-gray-500 text-xs">Instant cut</p>
+        </div>
+        <div class="ts-fragment p-5 rounded-xl bg-white/[0.04] border border-white/[0.06] hover:border-violet-500/40 transition-colors" data-ts-animation="fade-up">
+          <p class="text-lg font-semibold text-white mb-1">Fade</p>
+          <p class="text-gray-500 text-xs">Cross dissolve</p>
+        </div>
+        <div class="ts-fragment p-5 rounded-xl bg-violet-600/20 border border-violet-500/30" data-ts-animation="fade-up">
+          <p class="text-lg font-semibold text-violet-300 mb-1">Slide</p>
+          <p class="text-violet-400/60 text-xs">Default &bull; Active</p>
+        </div>
+        <div class="ts-fragment p-5 rounded-xl bg-white/[0.04] border border-white/[0.06] hover:border-violet-500/40 transition-colors" data-ts-animation="fade-up">
+          <p class="text-lg font-semibold text-white mb-1">Zoom</p>
+          <p class="text-gray-500 text-xs">Scale in/out</p>
+        </div>
+        <div class="ts-fragment p-5 rounded-xl bg-white/[0.04] border border-white/[0.06] hover:border-violet-500/40 transition-colors" data-ts-animation="fade-up">
+          <p class="text-lg font-semibold text-white mb-1">Flip</p>
+          <p class="text-gray-500 text-xs">3D card flip</p>
+        </div>
+        <div class="ts-fragment p-5 rounded-xl bg-white/[0.04] border border-white/[0.06] hover:border-violet-500/40 transition-colors" data-ts-animation="fade-up">
+          <p class="text-lg font-semibold text-white mb-1">Cube</p>
+          <p class="text-gray-500 text-xs">3D cube rotation</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Slide 5: Fragments showcase -->
+  <section class="ts-slide">
+    <div class="ts-content">
+      <h2 class="text-4xl font-bold mb-2">
+        <span class="gradient-text bg-gradient-to-r from-rose-400 to-red-500">Fragment Animations</span>
+      </h2>
+      <p class="text-gray-500 mb-10 text-lg">Reveal content step by step with eight animation types.</p>
+      <div class="space-y-4 max-w-2xl">
+        <div class="ts-fragment flex items-center gap-4 p-4 rounded-xl bg-white/[0.03] border border-white/[0.06]" data-ts-animation="fade-in">
+          <code class="text-rose-400 text-sm font-mono bg-white/[0.06] px-3 py-1 rounded-lg shrink-0">fade-in</code>
+          <span class="text-gray-400">Simple opacity fade</span>
+        </div>
+        <div class="ts-fragment flex items-center gap-4 p-4 rounded-xl bg-white/[0.03] border border-white/[0.06]" data-ts-animation="fade-up">
+          <code class="text-orange-400 text-sm font-mono bg-white/[0.06] px-3 py-1 rounded-lg shrink-0">fade-up</code>
+          <span class="text-gray-400">Slides up into view</span>
+        </div>
+        <div class="ts-fragment flex items-center gap-4 p-4 rounded-xl bg-white/[0.03] border border-white/[0.06]" data-ts-animation="fade-left">
+          <code class="text-amber-400 text-sm font-mono bg-white/[0.06] px-3 py-1 rounded-lg shrink-0">fade-left</code>
+          <span class="text-gray-400">Slides in from the right</span>
+        </div>
+        <div class="ts-fragment flex items-center gap-4 p-4 rounded-xl bg-white/[0.03] border border-white/[0.06]" data-ts-animation="grow">
+          <code class="text-emerald-400 text-sm font-mono bg-white/[0.06] px-3 py-1 rounded-lg shrink-0">grow</code>
+          <span class="text-gray-400">Scales up from small</span>
+        </div>
+        <div class="ts-fragment flex items-center gap-4 p-4 rounded-xl bg-white/[0.03] border border-white/[0.06]" data-ts-animation="highlight">
+          <code class="text-blue-400 text-sm font-mono bg-white/[0.06] px-3 py-1 rounded-lg shrink-0">highlight</code>
+          <span class="text-gray-400">Highlights with color</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Slide 6: Code example -->
+  <section class="ts-slide">
+    <div class="ts-content">
+      <h2 class="text-4xl font-bold mb-2">
+        <span class="gradient-text bg-gradient-to-r from-cyan-400 to-blue-500">Quick Setup</span>
+      </h2>
+      <p class="text-gray-500 mb-8 text-lg">Get running in under 10 lines.</p>
+      <div class="rounded-2xl bg-[#0d1117] border border-white/[0.08] overflow-hidden">
+        <div class="flex items-center gap-2 px-4 py-3 bg-white/[0.03] border-b border-white/[0.06]">
+          <span class="w-3 h-3 rounded-full bg-red-500/80"></span>
+          <span class="w-3 h-3 rounded-full bg-yellow-500/80"></span>
+          <span class="w-3 h-3 rounded-full bg-green-500/80"></span>
+          <span class="ml-3 text-gray-500 text-xs font-mono">main.ts</span>
+        </div>
+        <pre class="p-6 text-sm leading-relaxed"><code class="text-gray-300"><span class="text-purple-400">import</span> TailSlide, {
+  ProgressPlugin,
+  SlideNumberPlugin,
+  OverviewPlugin
+} <span class="text-purple-400">from</span> <span class="text-emerald-400">'tailslide'</span>;
+
+<span class="text-purple-400">const</span> <span class="text-blue-300">deck</span> = <span class="text-purple-400">new</span> <span class="text-yellow-300">TailSlide</span>({
+  <span class="text-blue-300">transition</span>: <span class="text-emerald-400">'slide'</span>,
+  <span class="text-blue-300">dark</span>: <span class="text-orange-400">true</span>,
+});
+
+deck.<span class="text-yellow-300">use</span>(<span class="text-purple-400">new</span> <span class="text-yellow-300">ProgressPlugin</span>());
+deck.<span class="text-yellow-300">use</span>(<span class="text-purple-400">new</span> <span class="text-yellow-300">SlideNumberPlugin</span>());
+deck.<span class="text-yellow-300">use</span>(<span class="text-purple-400">new</span> <span class="text-yellow-300">OverviewPlugin</span>());</code></pre>
+      </div>
+    </div>
+  </section>
+
+  <!-- Slide 7: Layouts -->
+  <section class="ts-slide">
+    <div class="ts-content">
+      <h2 class="text-4xl font-bold mb-2">
+        <span class="gradient-text bg-gradient-to-r from-teal-400 to-emerald-500">Flexible Layouts</span>
+      </h2>
+      <p class="text-gray-500 mb-10 text-lg">Use Tailwind's grid and flex to build any layout.</p>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+        <div class="row-span-2 rounded-2xl bg-gradient-to-br from-teal-900/40 to-emerald-900/40 border border-teal-500/20 p-6 flex flex-col justify-between">
+          <div>
+            <p class="text-xs uppercase tracking-wider text-teal-400 mb-2 font-medium">Split Layout</p>
+            <p class="text-2xl font-bold text-white mb-3">Content Left</p>
+            <p class="text-gray-400 text-sm leading-relaxed">Place text on one side and images, code, or charts on the other using grid columns.</p>
+          </div>
+          <code class="text-xs text-teal-300/60 font-mono mt-4">grid-cols-2</code>
+        </div>
+        <div class="rounded-2xl bg-gradient-to-br from-blue-900/40 to-indigo-900/40 border border-blue-500/20 p-6">
+          <p class="text-xs uppercase tracking-wider text-blue-400 mb-2 font-medium">Centered</p>
+          <p class="text-lg font-semibold text-white">Stack &amp; center content</p>
+          <code class="text-xs text-blue-300/60 font-mono mt-2 block">flex items-center justify-center</code>
+        </div>
+        <div class="rounded-2xl bg-gradient-to-br from-purple-900/40 to-violet-900/40 border border-purple-500/20 p-6">
+          <p class="text-xs uppercase tracking-wider text-purple-400 mb-2 font-medium">Bento Grid</p>
+          <p class="text-lg font-semibold text-white">Mix card sizes freely</p>
+          <code class="text-xs text-purple-300/60 font-mono mt-2 block">grid row-span-2 col-span-2</code>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Slide 8: Dark mode -->
+  <section class="ts-slide">
+    <div class="ts-content text-center">
+      <div class="mb-10">
+        <h2 class="text-4xl font-bold mb-2">
+          <span class="gradient-text bg-gradient-to-r from-yellow-300 to-orange-400">Dark &amp; Light</span>
+        </h2>
+        <p class="text-gray-500 text-lg">Toggle with a single class. Your Tailwind dark: utilities just work.</p>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-3xl mx-auto">
+        <div class="rounded-2xl bg-white p-8 text-left shadow-2xl">
+          <div class="flex items-center gap-2 mb-4">
+            <div class="w-2 h-2 rounded-full bg-blue-500"></div>
+            <span class="text-gray-800 font-semibold text-sm">Light Mode</span>
+          </div>
+          <p class="text-gray-600 text-sm leading-relaxed mb-4">Clean, professional look with light backgrounds and dark text. Perfect for well-lit rooms.</p>
+          <code class="text-xs text-gray-400 font-mono">&lt;div class="ts-deck"&gt;</code>
+        </div>
+        <div class="rounded-2xl bg-[#111] border border-white/[0.08] p-8 text-left">
+          <div class="flex items-center gap-2 mb-4">
+            <div class="w-2 h-2 rounded-full bg-blue-400"></div>
+            <span class="text-gray-200 font-semibold text-sm">Dark Mode</span>
+          </div>
+          <p class="text-gray-400 text-sm leading-relaxed mb-4">Eye-friendly dark theme with subtle borders and soft text. Ideal for conference stages.</p>
+          <code class="text-xs text-gray-500 font-mono">&lt;div class="ts-deck ts-dark"&gt;</code>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Slide 9: Getting started -->
+  <section class="ts-slide">
+    <div class="ts-content">
+      <h2 class="text-4xl font-bold mb-2">
+        <span class="gradient-text bg-gradient-to-r from-pink-400 to-rose-500">Get Started</span>
+      </h2>
+      <p class="text-gray-500 mb-10 text-lg">Three steps to your first presentation.</p>
+      <div class="space-y-6 max-w-2xl">
+        <div class="ts-fragment flex gap-5" data-ts-animation="fade-up">
+          <div class="shrink-0 w-10 h-10 rounded-full bg-pink-500/20 border border-pink-500/30 flex items-center justify-center text-pink-400 font-bold">1</div>
+          <div>
+            <p class="text-white font-semibold mb-1">Install</p>
+            <div class="rounded-lg bg-white/[0.04] border border-white/[0.06] px-4 py-2.5">
+              <code class="text-sm text-gray-300 font-mono">npm install tailslide</code>
+            </div>
+          </div>
+        </div>
+        <div class="ts-fragment flex gap-5" data-ts-animation="fade-up">
+          <div class="shrink-0 w-10 h-10 rounded-full bg-pink-500/20 border border-pink-500/30 flex items-center justify-center text-pink-400 font-bold">2</div>
+          <div>
+            <p class="text-white font-semibold mb-1">Add your slides</p>
+            <div class="rounded-lg bg-white/[0.04] border border-white/[0.06] px-4 py-2.5">
+              <code class="text-sm text-gray-300 font-mono">&lt;section class="ts-slide"&gt; ... &lt;/section&gt;</code>
+            </div>
+          </div>
+        </div>
+        <div class="ts-fragment flex gap-5" data-ts-animation="fade-up">
+          <div class="shrink-0 w-10 h-10 rounded-full bg-pink-500/20 border border-pink-500/30 flex items-center justify-center text-pink-400 font-bold">3</div>
+          <div>
+            <p class="text-white font-semibold mb-1">Initialize &amp; present</p>
+            <div class="rounded-lg bg-white/[0.04] border border-white/[0.06] px-4 py-2.5">
+              <code class="text-sm text-gray-300 font-mono">new TailSlide({ dark: true })</code>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Slide 10: Thank you -->
+  <section class="ts-slide">
+    <div class="ts-content text-center">
+      <p class="text-sm uppercase tracking-[0.3em] text-purple-400 mb-6 font-medium">Thank You</p>
+      <h1 class="text-6xl md:text-7xl font-extrabold mb-6">
+        <span class="gradient-text bg-gradient-to-r from-blue-400 via-violet-400 to-purple-500">Start Presenting</span>
+      </h1>
+      <p class="text-xl text-gray-400 max-w-xl mx-auto leading-relaxed mb-12">
+        Build stunning, fast, Tailwind-powered presentations today.
+      </p>
+      <div class="flex items-center justify-center gap-4 mb-16">
+        <span class="inline-block px-6 py-2.5 bg-gradient-to-r from-blue-600 to-purple-600 text-white rounded-full text-sm font-medium">Read the Docs</span>
+        <span class="inline-block px-6 py-2.5 border border-gray-600 text-gray-300 rounded-full text-sm font-medium">View on GitHub</span>
+      </div>
+      <div class="flex items-center justify-center gap-8 text-gray-600 text-sm">
+        <span>MIT Licensed</span>
+        <span>&bull;</span>
+        <span>TypeScript</span>
+        <span>&bull;</span>
+        <span>Zero Dependencies</span>
+      </div>
+      <p class="mt-10 text-gray-700 text-xs">Press <kbd class="px-1.5 py-0.5 bg-gray-800 rounded text-gray-500 font-mono text-xs">O</kbd> for overview mode</p>
+    </div>
+  </section>
+
+</div>
+
+<script type="module">
+  import TailSlide, { ProgressPlugin, SlideNumberPlugin, OverviewPlugin } from '../src/index.ts';
+
+  const deck = new TailSlide({
+    el: '.ts-deck',
+    transition: 'slide',
+    transitionSpeed: 500,
+    dark: true,
+    hash: true,
+  });
+
+  deck.use(new ProgressPlugin());
+  deck.use(new SlideNumberPlugin());
+  deck.use(new OverviewPlugin());
+</script>
+
+</body>
+</html>

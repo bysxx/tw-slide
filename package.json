@@ -1,0 +1,52 @@
+{
+  "name": "tw-slide",
+  "version": "0.1.1",
+  "description": "Modern Tailwind-based presentation library for the web",
+  "type": "module",
+  "main": "dist/tailslide.umd.js",
+  "module": "dist/tailslide.es.js",
+  "types": "dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/tailslide.es.js",
+      "require": "./dist/tailslide.umd.js"
+    },
+    "./style.css": "./dist/tail-slide.css"
+  },
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "dev": "vite serve demo",
+    "build": "vite build",
+    "build:demo": "vite build --config vite.demo.config.ts",
+    "preview": "vite preview",
+    "typecheck": "tsc --noEmit"
+  },
+  "keywords": [
+    "presentation",
+    "slides",
+    "tailwind",
+    "html",
+    "javascript",
+    "typescript"
+  ],
+  "license": "MIT",
+  "devDependencies": {
+    "autoprefixer": "^10.4.21",
+    "postcss": "^8.5.3",
+    "tailwindcss": "^3.4.17",
+    "typescript": "^5.7.3",
+    "vite": "^6.1.0",
+    "vite-plugin-dts": "^4.5.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bysxx/tw-slide.git"
+  },
+  "bugs": {
+    "url": "https://github.com/bysxx/tw-slide/issues"
+  },
+  "homepage": "https://github.com/bysxx/tw-slide#readme"
+}

@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Edge Computing in 2026 | tw-slide</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tw-slide/dist/tw-slide.css" />
+  <style>
+    .gradient-text { background-clip: text; -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+    .code-line { font-family: 'SF Mono', 'Fira Code', monospace; }
+  </style>
+</head>
+<body>
+
+<div class="ts-deck ts-dark">
+
+  <!-- 1. Title -->
+  <section class="ts-slide">
+    <div class="ts-content text-center">
+      <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-xs font-medium mb-8">
+        <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
+        LIVE · DevConf 2026
+      </div>
+      <h1 class="text-6xl md:text-7xl font-extrabold mb-6">
+        <span class="gradient-text bg-gradient-to-r from-emerald-400 via-cyan-400 to-blue-500">Edge Computing</span>
+      </h1>
+      <p class="text-xl text-gray-400 max-w-2xl mx-auto">
+        서버리스를 넘어, 사용자 옆에서 실행되는 코드의 시대
+      </p>
+      <div class="mt-12 flex items-center justify-center gap-3 text-gray-600 text-sm">
+        <span class="px-3 py-1 rounded-full bg-white/[0.04]">#Edge</span>
+        <span class="px-3 py-1 rounded-full bg-white/[0.04]">#WebAssembly</span>
+        <span class="px-3 py-1 rounded-full bg-white/[0.04]">#Serverless</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- 2. 왜 Edge인가 -->
+  <section class="ts-slide">
+    <div class="ts-content">
+      <h2 class="text-4xl font-bold mb-2">
+        <span class="gradient-text bg-gradient-to-r from-amber-400 to-orange-500">왜 Edge인가?</span>
+      </h2>
+      <p class="text-gray-500 mb-10 text-lg">기존 아키텍처의 한계</p>
+      <div class="space-y-4">
+        <div class="ts-fragment flex items-start gap-5 p-5 rounded-xl bg-white/[0.03] border border-white/[0.06]" data-ts-animation="fade-up">
+          <span class="text-2xl mt-0.5">🌍</span>
+          <div>
+            <p class="text-white font-semibold mb-1">Latency Matters</p>
+            <p class="text-gray-400 text-sm">us-east-1까지 왕복 200ms. 서울에서 버지니아는 너무 멀다.</p>
+          </div>
+        </div>
+        <div class="ts-fragment flex items-start gap-5 p-5 rounded-xl bg-white/[0.03] border border-white/[0.06]" data-ts-animation="fade-up">
+          <span class="text-2xl mt-0.5">💸</span>
+          <div>
+            <p class="text-white font-semibold mb-1">Cost at Scale</p>
+            <p class="text-gray-400 text-sm">리전별 서버 운영 비용 vs. Edge에서 자동 스케일링</p>
+          </div>
+        </div>
+        <div class="ts-fragment flex items-start gap-5 p-5 rounded-xl bg-white/[0.03] border border-white/[0.06]" data-ts-animation="fade-up">
+          <span class="text-2xl mt-0.5">⚡</span>
+          <div>
+            <p class="text-white font-semibold mb-1">Cold Start Problem</p>
+            <p class="text-gray-400 text-sm">Lambda 콜드스타트 ~500ms vs. Edge Worker ~5ms</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 3. Edge vs Traditional -->
+  <section class="ts-slide">
+    <div class="ts-content text-center">
+      <h2 class="text-4xl font-bold mb-12">
+        <span class="gradient-text bg-gradient-to-r from-cyan-400 to-blue-500">응답 시간 비교</span>
+      </h2>
+      <div class="max-w-3xl mx-auto space-y-6">
+        <div class="ts-fragment" data-ts-animation="fade-up">
+          <div class="flex items-center gap-4 mb-2">
+            <span class="text-gray-400 text-sm w-28 text-right shrink-0">Traditional</span>
+            <div class="flex-1 h-10 rounded-lg bg-red-500/20 border border-red-500/20 relative overflow-hidden">
+              <div class="h-full bg-gradient-to-r from-red-500 to-red-600 rounded-lg" style="width:85%"></div>
+              <span class="absolute right-3 top-1/2 -translate-y-1/2 text-white text-sm font-mono font-bold">~200ms</span>
+            </div>
+          </div>
+        </div>
+        <div class="ts-fragment" data-ts-animation="fade-up">
+          <div class="flex items-center gap-4 mb-2">
+            <span class="text-gray-400 text-sm w-28 text-right shrink-0">Serverless</span>
+            <div class="flex-1 h-10 rounded-lg bg-amber-500/20 border border-amber-500/20 relative overflow-hidden">
+              <div class="h-full bg-gradient-to-r from-amber-500 to-orange-500 rounded-lg" style="width:45%"></div>
+              <span class="absolute right-3 top-1/2 -translate-y-1/2 text-white text-sm font-mono font-bold">~90ms</span>
+            </div>
+          </div>
+        </div>
+        <div class="ts-fragment" data-ts-animation="fade-up">
+          <div class="flex items-center gap-4 mb-2">
+            <span class="text-emerald-400 text-sm w-28 text-right shrink-0 font-semibold">Edge</span>
+            <div class="flex-1 h-10 rounded-lg bg-emerald-500/20 border border-emerald-500/20 relative overflow-hidden">
+              <div class="h-full bg-gradient-to-r from-emerald-500 to-cyan-500 rounded-lg" style="width:8%"></div>
+              <span class="absolute left-[12%] top-1/2 -translate-y-1/2 text-white text-sm font-mono font-bold">~5ms</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 4. Code Example -->
+  <section class="ts-slide">
+    <div class="ts-content">
+      <h2 class="text-4xl font-bold mb-2">
+        <span class="gradient-text bg-gradient-to-r from-violet-400 to-purple-500">Edge Worker 코드</span>
+      </h2>
+      <p class="text-gray-500 mb-8 text-lg">익숙한 Web API, 새로운 실행 환경</p>
+      <div class="rounded-2xl bg-[#0d1117] border border-white/[0.08] overflow-hidden">
+        <div class="flex items-center gap-2 px-4 py-3 bg-white/[0.03] border-b border-white/[0.06]">
+          <span class="w-3 h-3 rounded-full bg-red-500/80"></span>
+          <span class="w-3 h-3 rounded-full bg-yellow-500/80"></span>
+          <span class="w-3 h-3 rounded-full bg-green-500/80"></span>
+          <span class="ml-3 text-gray-500 text-xs font-mono">worker.ts</span>
+        </div>
+        <pre class="p-6 text-sm leading-relaxed overflow-x-auto"><code class="text-gray-300"><span class="text-purple-400">export default</span> {
+  <span class="text-purple-400">async</span> <span class="text-yellow-300">fetch</span>(<span class="text-blue-300">request</span>: Request): Promise&lt;Response&gt; {
+    <span class="text-purple-400">const</span> <span class="text-blue-300">url</span> = <span class="text-purple-400">new</span> <span class="text-yellow-300">URL</span>(request.url);
+
+    <span class="text-gray-500">// 사용자와 가장 가까운 엣지에서 실행</span>
+    <span class="text-purple-400">const</span> <span class="text-blue-300">geo</span> = request.cf?.country ?? <span class="text-emerald-400">'unknown'</span>;
+    <span class="text-purple-400">const</span> <span class="text-blue-300">cached</span> = <span class="text-purple-400">await</span> caches.default.<span class="text-yellow-300">match</span>(request);
+
+    <span class="text-purple-400">if</span> (cached) <span class="text-purple-400">return</span> cached;
+
+    <span class="text-purple-400">const</span> <span class="text-blue-300">data</span> = <span class="text-purple-400">await</span> <span class="text-yellow-300">getContent</span>(url.pathname, geo);
+    <span class="text-purple-400">return</span> <span class="text-yellow-300">Response</span>.<span class="text-yellow-300">json</span>(data, {
+      headers: { <span class="text-emerald-400">'Cache-Control'</span>: <span class="text-emerald-400">'s-maxage=60'</span> }
+    });
+  }
+};</code></pre>
+      </div>
+    </div>
+  </section>
+
+  <!-- 5. WebAssembly -->
+  <section class="ts-slide">
+    <div class="ts-content">
+      <h2 class="text-4xl font-bold mb-2">
+        <span class="gradient-text bg-gradient-to-r from-blue-400 to-indigo-500">Wasm + Edge</span>
+      </h2>
+      <p class="text-gray-500 mb-10 text-lg">어떤 언어든 Edge에서 실행</p>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+        <div class="ts-fragment rounded-2xl bg-white/[0.03] border border-white/[0.06] p-6" data-ts-animation="fade-left">
+          <div class="flex items-center gap-3 mb-4">
+            <div class="w-10 h-10 rounded-lg bg-orange-500/20 flex items-center justify-center text-orange-400 font-bold text-sm">Rs</div>
+            <p class="text-white font-semibold">Rust → Wasm</p>
+          </div>
+          <p class="text-gray-400 text-sm leading-relaxed">네이티브에 가까운 성능. 이미지 처리, 암호화 등 연산 집약적 작업에 적합.</p>
+        </div>
+        <div class="ts-fragment rounded-2xl bg-white/[0.03] border border-white/[0.06] p-6" data-ts-animation="fade-left">
+          <div class="flex items-center gap-3 mb-4">
+            <div class="w-10 h-10 rounded-lg bg-blue-500/20 flex items-center justify-center text-blue-400 font-bold text-sm">Go</div>
+            <p class="text-white font-semibold">Go → Wasm</p>
+          </div>
+          <p class="text-gray-400 text-sm leading-relaxed">간결한 문법. API 게이트웨이, 미들웨어 로직에 최적화.</p>
+        </div>
+        <div class="ts-fragment rounded-2xl bg-white/[0.03] border border-white/[0.06] p-6" data-ts-animation="fade-left">
+          <div class="flex items-center gap-3 mb-4">
+            <div class="w-10 h-10 rounded-lg bg-yellow-500/20 flex items-center justify-center text-yellow-400 font-bold text-sm">Py</div>
+            <p class="text-white font-semibold">Python → Wasm</p>
+          </div>
+          <p class="text-gray-400 text-sm leading-relaxed">ML 추론을 Edge에서. ONNX 모델을 사용자 옆에서 실행.</p>
+        </div>
+        <div class="ts-fragment rounded-2xl bg-white/[0.03] border border-white/[0.06] p-6" data-ts-animation="fade-left">
+          <div class="flex items-center gap-3 mb-4">
+            <div class="w-10 h-10 rounded-lg bg-cyan-500/20 flex items-center justify-center text-cyan-400 font-bold text-sm">JS</div>
+            <p class="text-white font-semibold">JavaScript / TS</p>
+          </div>
+          <p class="text-gray-400 text-sm leading-relaxed">V8 Isolates 기반. 풀스택 개발자에게 가장 친숙한 선택.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 6. Architecture -->
+  <section class="ts-slide">
+    <div class="ts-content text-center">
+      <h2 class="text-4xl font-bold mb-10">
+        <span class="gradient-text bg-gradient-to-r from-pink-400 to-rose-500">아키텍처</span>
+      </h2>
+      <div class="max-w-3xl mx-auto">
+        <div class="flex items-center justify-between gap-3 mb-4">
+          <div class="ts-fragment flex-1 rounded-xl bg-blue-500/10 border border-blue-500/20 p-4" data-ts-animation="fade-in">
+            <p class="text-blue-400 font-mono text-sm font-semibold">Client</p>
+            <p class="text-gray-500 text-xs mt-1">Browser / App</p>
+          </div>
+          <div class="ts-fragment text-gray-600" data-ts-animation="fade-in">→</div>
+          <div class="ts-fragment flex-1 rounded-xl bg-emerald-500/10 border border-emerald-500/20 p-4" data-ts-animation="fade-in">
+            <p class="text-emerald-400 font-mono text-sm font-semibold">Edge</p>
+            <p class="text-gray-500 text-xs mt-1">300+ PoPs</p>
+          </div>
+          <div class="ts-fragment text-gray-600" data-ts-animation="fade-in">→</div>
+          <div class="ts-fragment flex-1 rounded-xl bg-purple-500/10 border border-purple-500/20 p-4" data-ts-animation="fade-in">
+            <p class="text-purple-400 font-mono text-sm font-semibold">Origin</p>
+            <p class="text-gray-500 text-xs mt-1">Database</p>
+          </div>
+        </div>
+        <div class="ts-fragment mt-8 rounded-xl bg-white/[0.03] border border-white/[0.06] p-5 text-left" data-ts-animation="fade-up">
+          <p class="text-gray-400 text-sm leading-relaxed">
+            <span class="text-emerald-400 font-semibold">Edge Layer</span>에서 인증, 캐싱, A/B 테스트, 지오 라우팅을 처리합니다.
+            Origin에 도달하는 요청을 <span class="text-white font-semibold">최대 80%</span> 줄일 수 있습니다.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 7. Wrap up -->
+  <section class="ts-slide">
+    <div class="ts-content text-center">
+      <h1 class="text-5xl md:text-6xl font-extrabold mb-6">
+        <span class="gradient-text bg-gradient-to-r from-emerald-400 via-cyan-400 to-blue-500">Think at the Edge.</span>
+      </h1>
+      <p class="text-xl text-gray-400 max-w-xl mx-auto leading-relaxed mb-12">
+        사용자와 가장 가까운 곳에서<br/>가장 빠르게 응답하는 아키텍처를 설계하세요.
+      </p>
+      <div class="flex items-center justify-center gap-8 text-gray-600 text-sm">
+        <span>@devconf2026</span>
+        <span>&bull;</span>
+        <span>#EdgeComputing</span>
+      </div>
+    </div>
+  </section>
+
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/tw-slide/dist/tailslide.umd.js"></script>
+<script>
+  const deck = new TailSlide.TailSlide({ transition: 'fade', transitionSpeed: 400, dark: true });
+  deck.use(new TailSlide.ProgressPlugin());
+  deck.use(new TailSlide.SlideNumberPlugin());
+</script>
+</body>
+</html>
