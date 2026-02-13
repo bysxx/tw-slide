@@ -74,7 +74,7 @@ npm install tw-slide
 
 ## CDN
 
-npm 설치 없이 바로 사용:
+Use without npm — just drop these into your HTML:
 
 ```html
 <!-- JS -->
@@ -84,14 +84,14 @@ npm 설치 없이 바로 사용:
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tw-slide/dist/tw-slide.css">
 ```
 
-또는 unpkg:
+Or via unpkg:
 
 ```html
 <script src="https://unpkg.com/tw-slide/dist/tailslide.umd.js"></script>
 <link rel="stylesheet" href="https://unpkg.com/tw-slide/dist/tw-slide.css">
 ```
 
-CDN 사용 시 `TailSlide` 글로벌 변수로 접근:
+Access via the `TailSlide` global:
 
 ```html
 <script>
