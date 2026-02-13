@@ -311,6 +311,55 @@ Chrome, Firefox, Safari, Edge — all modern browsers with [Web Animations API](
 
 <br />
 
+## Use with AI
+
+Copy the prompt below and paste it into ChatGPT, Claude, or any AI assistant to generate a presentation instantly:
+
+<details>
+<summary><b>📋 Click to copy prompt</b></summary>
+
+<br />
+
+```
+Create a single HTML file presentation using the tw-slide library.
+
+Rules:
+- Include via CDN (no npm/build step):
+  <script src="https://cdn.jsdelivr.net/npm/tw-slide/dist/tailslide.umd.js"></script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tw-slide/dist/tw-slide.css">
+  <script src="https://cdn.tailwindcss.com"></script>
+
+- Structure:
+  <div class="ts-deck ts-dark">
+    <section class="ts-slide">
+      <div class="ts-content">
+        <!-- content here, styled with Tailwind classes -->
+      </div>
+    </section>
+  </div>
+
+- Initialize at the bottom:
+  <script>
+    const deck = new TailSlide.TailSlide({ transition: 'slide', dark: true });
+    deck.use(new TailSlide.ProgressPlugin());
+    deck.use(new TailSlide.SlideNumberPlugin());
+  </script>
+
+- Use Tailwind classes for all styling (text-6xl, font-bold, bg-gradient-to-r, etc.)
+- Use ts-fragment with data-ts-animation="fade-up" for step-by-step reveals
+- Available transitions: none, fade, slide, zoom, flip, cube
+- Available fragment animations: fade-in, fade-up, fade-down, fade-left, fade-right, grow, shrink, highlight
+- Per-slide transition override: <section class="ts-slide" data-ts-transition="zoom">
+
+Topic: [YOUR TOPIC HERE]
+Number of slides: [NUMBER]
+Style: [e.g. dark, minimal, colorful, corporate]
+```
+
+</details>
+
+<br />
+
 <div align="center">
 
 ## License
